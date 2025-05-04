@@ -2,12 +2,5 @@
   "rewrites": [
     { "source": "/", "destination": "/public/index.html" }
   ],
-  "version": 2,
-  "cron": [
-    {
-      "path": "/api/schedule",
-      "schedule": "* * * * *",
-      "method":"GET"
-    }
-  ]
+  "version": 2
 }
