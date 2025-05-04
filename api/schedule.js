@@ -11,6 +11,7 @@ webPush.setVapidDetails(
 let scheduled = []; // メモリ保持（無料プランならOK）
 
 export default async function handler(req, res) {
+  console.log('cron実行！', new Date().toISOString());
   if (req.method === 'POST') {
     const { subscription, time, message } = req.body;
     scheduled.push({ subscription, time, message });
