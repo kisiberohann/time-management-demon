@@ -1,6 +1,6 @@
 // api/schedule.js
 import webPush from 'web-push';
-import { publicKey, privateKey } from '../utils/vapid';
+import { publicKey, privateKey } from '../utils/vapid.js';
 
 webPush.setVapidDetails(
   'mailto:i10784@nara.kosen-ac.jp',
