@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>通知予約</title></head>
+<body>
+  <input type="time" id="timeInput">
+  <input type="text" id="msgInput" placeholder="通知内容">
+  <button id="btn">通知予約</button>
+
+  <script>
+    const publicKey = 'BNlbvHZsZMUjAQ6kP_0SQOKtIBNJaO0NMzICB9tcvd7nr9S0TUtOZbxg62YR9Pg7fL6zm31Plvct-Il5rAElyV';
+
+    async function urlBase64ToUint8Array(base64) {
+      const pad = '='.repeat((4 - base64.length % 4) % 4);
+      const base64Data = (base64 + pad).replace(/\-/g, '+').replace(/_/g, '/');
+      const raw = atob(base64Data);
+      return new Uint8Array([...raw].map(c => c.charCodeAt(0)));
+    }
+
+    document.getElementById('btn').onclick = async () => {
+      const time = document.getElementById('timeInput').value;
+      const msg = document.getElementById('msgInput').value;
+
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        alert('通知が許可されていません');
+        return;
+      }
+
+      const reg = await navigator.serviceWorker.register('sw.js');
+      const sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: await urlBase64ToUint8Array(publicKey)
+      });
+
+      await fetch('/api/schedule', {
+        method: 'POST',
+        body: JSON.stringify({ subscription: sub, time, message: msg }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      alert(`${time} に通知を予約しました`);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "push-app",
+  "type": "module",
+  "dependencies": {
+    "web-push": "^3.5.0"
+  }
+}
