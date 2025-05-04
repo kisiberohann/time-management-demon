@@ -2,11 +2,18 @@
   "rewrites": [
     { "source": "/", "destination": "/public/index.html" }
   ],
+  "version": 2,
+  "functions": {
+    "api/schedule.js": {
+      "runtime": "nodejs18.x",
+      "memory": 128
+    }
+  },
   "cron": [
     {
-      "path": "/api/schedule.js",
+      "path": "/api/schedule",
       "schedule": "* * * * *",
-      "enabled": true
+      "method":"GET"
     }
   ]
 }
