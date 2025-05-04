@@ -3,12 +3,6 @@
     { "source": "/", "destination": "/public/index.html" }
   ],
   "version": 2,
-  "functions": {
-    "api/schedule.js": {
-      "runtime": "nodejs18.x",
-      "memory": 128
-    }
-  },
   "cron": [
     {
       "path": "/api/schedule",
