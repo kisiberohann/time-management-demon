@@ -25,12 +25,14 @@
         alert('通知が許可されていません');
         return;
       }
-
+      alert("kokomadekita?");
       const reg = await navigator.serviceWorker.register('sw.js');
+      alert("ここはどうだ？");
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: await urlBase64ToUint8Array(publicKey)
       });
+      alert("ここは来てなさそう");
 
       await fetch('/api/schedule', {
         method: 'POST',
