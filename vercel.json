@@ -1,5 +1,12 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/public/index.html" }
+  ],
+  "cron": [
+    {
+      "path": "/api/schedule",
+      "schedule": "* * * * *",
+      "enabled": true
+    }
   ]
 }
