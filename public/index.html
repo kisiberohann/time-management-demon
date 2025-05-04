@@ -14,8 +14,8 @@
       const pad = '='.repeat((4 - base64.length % 4) % 4);
       const base64Data = (base64 + pad).replace(/\-/g, '+').replace(/_/g, '/');
       const raw = atob(base64Data);
+      alert("まさかね");
       return new Uint8Array([...raw].map(c => c.charCodeAt(0)));
-      laert("masakane");
     }
 
     document.getElementById('btn').onclick = async () => {
