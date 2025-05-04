@@ -4,7 +4,7 @@
   ],
   "cron": [
     {
-      "path": "/api/schedule",
+      "path": "/api/schedule.js",
       "schedule": "* * * * *",
       "enabled": true
     }
