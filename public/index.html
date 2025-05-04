@@ -3,17 +3,19 @@
 <head><meta charset="UTF-8"><title>通知予約</title></head>
 <body>
   <input type="time" id="timeInput">
-  <input type="text" id="msgInput" placeholder="通知内容">asdcasd
+  <input type="text" id="msgInput" placeholder="通知内容">
   <button id="btn">通知予約</button>
 
   <script>
     const publicKey = 'BNlbvHZsZMUjAQ6kP_0SQOKtIBNJaO0NMzICB9tcvd7nr9S0TUtOZbxg62YR9Pg7fL6zm31Plvct-Il5rAElyV';
 
     async function urlBase64ToUint8Array(base64) {
+      alert("こいつはどうだ？");
       const pad = '='.repeat((4 - base64.length % 4) % 4);
       const base64Data = (base64 + pad).replace(/\-/g, '+').replace(/_/g, '/');
       const raw = atob(base64Data);
       return new Uint8Array([...raw].map(c => c.charCodeAt(0)));
+      laert("masakane");
     }
 
     document.getElementById('btn').onclick = async () => {
